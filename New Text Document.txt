@@ -1,0 +1,40 @@
+Version S3
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+"Sid": "PublicReadGetObject",
+"Effect": "Allow",
+"Principal": "*",
+"Action": "s3:GetObject",
+"Resource": "arn:aws:s3:::mywebaryan/*"
+}
+]
+]
+
+
+
+Lambda
+import json
+import boto3
+def lambda_handler(event, context):
+	client = boto3.client('s3')
+	response = client.create_bucket(
+	Bucket='rashmidemocloudthat1',
+	CreateBucketConfiguration={
+	'LocationConstraint': 'ap-south-1',
+	})
+	print(response)
+
+
+
+Load Balancer/EC2
+yum update -y
+yum install -y httpd
+
+# Start and enable Apache
+systemctl start httpd
+systemctl enable httpd
+
+# Create a simple HTML page
+echo "<html><body><h1>Hello from $ (hostname -f)</h1></body></html>" > /var/www/html/index.html
